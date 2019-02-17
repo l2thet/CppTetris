@@ -45,6 +45,13 @@ void T::rotate()
 		break;
 	case Right: 
 		currentState = Down;
+		SquareOne = Location;
+		SquareTwo.x = SquareOne.x;
+		SquareTwo.y = SquareOne.y - 10;
+		SquareThree.x = SquareOne.x + 10;
+		SquareThree.y = SquareOne.y - 10;
+		SquareFour.x = SquareOne.x - 10;
+		SquareFour.y = SquareOne.y - 10;
 		break;
 	case Down: 
 		currentState = Left;
@@ -86,6 +93,17 @@ void T::move(int updown, int leftright)
 		SquareThree.y = SquareOne.y - 10;
 		SquareFour.x = SquareOne.x - 10;
 		SquareFour.y = SquareOne.y + 10;
+		break;
+	case Down:
+		Location.y += updown;
+		Location.x += leftright;
+		SquareOne = Location;
+		SquareTwo.x = SquareOne.x;
+		SquareTwo.y = SquareOne.y - 10;
+		SquareThree.x = SquareOne.x + 10;
+		SquareThree.y = SquareOne.y - 10;
+		SquareFour.x = SquareOne.x - 10;
+		SquareFour.y = SquareOne.y - 10;
 		break;
 	}
 	

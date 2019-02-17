@@ -97,7 +97,7 @@
     <Link />
     <Link />
     <Link>
-      <AdditionalLibraryDirectories>C:\Users\daltv\source\repos\TetrisClone\packages\Allegro.5.2.4.0\build\native\v141\x64\lib;C:\Users\daltv\source\repos\TetrisClone\packages\Allegro.5.2.4.0\build\native\v141\win32\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>D:\Repo\CppTetris\packages\Allegro.5.2.4.0\build\native\v141\x64\lib;C:\Users\daltv\source\repos\TetrisClone\packages\Allegro.5.2.4.0\build\native\v141\x64\lib;C:\Users\daltv\source\repos\TetrisClone\packages\Allegro.5.2.4.0\build\native\v141\win32\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalDependencies>allegro.lib;allegro_font.lib;allegro_image.lib;allegro_primitives.lib;allegro_color.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
