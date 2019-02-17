@@ -6,12 +6,20 @@
 
 T::T()
 {
-	currentState = Up;
+	
+
+	//Shape going left and right from SquareOne
 	ShapeSize.x = 20;
 	ShapeSize.y = 20;
 
 	Location.x = 20;
 	Location.y = 20;
+
+	currentState = Up;
+	ShapeRange.MinYFromCenterBlock = 0;
+	ShapeRange.MaxYFromCenterBlock = 20;
+	ShapeRange.MinXFromCenterBlock = -10;
+	ShapeRange.MaxXFromCenterBlock = 20;
 
 	SquareOne = Location;
 	SquareTwo.x = SquareOne.x;
@@ -32,10 +40,14 @@ void T::draw()
 
 void T::rotate()
 {
+	SquareOne = Location;
 	switch (currentState) {
 	case Up: 
 		currentState = Right;
-		SquareOne = Location;
+		ShapeRange.MinYFromCenterBlock = -10;
+		ShapeRange.MaxYFromCenterBlock = 20;
+		ShapeRange.MinXFromCenterBlock = -10;
+		ShapeRange.MaxXFromCenterBlock = 10;
 		SquareTwo.x = SquareOne.x - 10;
 		SquareTwo.y = SquareOne.y;
 		SquareThree.x = SquareOne.x - 10;
@@ -45,7 +57,10 @@ void T::rotate()
 		break;
 	case Right: 
 		currentState = Down;
-		SquareOne = Location;
+		ShapeRange.MinYFromCenterBlock = -10;
+		ShapeRange.MaxYFromCenterBlock = 10;
+		ShapeRange.MinXFromCenterBlock = -10;
+		ShapeRange.MaxXFromCenterBlock = 20;
 		SquareTwo.x = SquareOne.x;
 		SquareTwo.y = SquareOne.y - 10;
 		SquareThree.x = SquareOne.x + 10;
@@ -55,10 +70,23 @@ void T::rotate()
 		break;
 	case Down: 
 		currentState = Left;
+		ShapeRange.MinYFromCenterBlock = -10;
+		ShapeRange.MaxYFromCenterBlock = 20;
+		ShapeRange.MinXFromCenterBlock = 0;
+		ShapeRange.MaxXFromCenterBlock = 20;
+		SquareTwo.x = SquareOne.x + 10;
+		SquareTwo.y = SquareOne.y;
+		SquareThree.x = SquareOne.x + 10;
+		SquareThree.y = SquareOne.y + 10;
+		SquareFour.x = SquareOne.x + 10;
+		SquareFour.y = SquareOne.y - 10;
 		break;
 	case Left:
 		currentState = Up;
-		SquareOne = Location;
+		ShapeRange.MinYFromCenterBlock = 0;
+		ShapeRange.MaxYFromCenterBlock = 20;
+		ShapeRange.MinXFromCenterBlock = -10;
+		ShapeRange.MaxXFromCenterBlock = 20;
 		SquareTwo.x = SquareOne.x;
 		SquareTwo.y = SquareOne.y + 10;
 		SquareThree.x = SquareOne.x + 10;
@@ -71,11 +99,11 @@ void T::rotate()
 
 void T::move(int updown, int leftright)
 {
+	Location.y += updown;
+	Location.x += leftright;
+	SquareOne = Location;
 	switch(currentState) {
 	case Up:
-		Location.y += updown;
-		Location.x += leftright;
-		SquareOne = Location;
 		SquareTwo.x = SquareOne.x;
 		SquareTwo.y = SquareOne.y + 10;
 		SquareThree.x = SquareOne.x + 10;
@@ -84,9 +112,6 @@ void T::move(int updown, int leftright)
 		SquareFour.y = SquareOne.y + 10;
 		break;
 	case Right:
-		Location.y += updown;
-		Location.x += leftright;
-		SquareOne = Location;
 		SquareTwo.x = SquareOne.x - 10;
 		SquareTwo.y = SquareOne.y;
 		SquareThree.x = SquareOne.x - 10;
@@ -95,14 +120,19 @@ void T::move(int updown, int leftright)
 		SquareFour.y = SquareOne.y + 10;
 		break;
 	case Down:
-		Location.y += updown;
-		Location.x += leftright;
-		SquareOne = Location;
 		SquareTwo.x = SquareOne.x;
 		SquareTwo.y = SquareOne.y - 10;
 		SquareThree.x = SquareOne.x + 10;
 		SquareThree.y = SquareOne.y - 10;
 		SquareFour.x = SquareOne.x - 10;
+		SquareFour.y = SquareOne.y - 10;
+		break;
+	case Left:
+		SquareTwo.x = SquareOne.x + 10;
+		SquareTwo.y = SquareOne.y;
+		SquareThree.x = SquareOne.x + 10;
+		SquareThree.y = SquareOne.y + 10;
+		SquareFour.x = SquareOne.x + 10;
 		SquareFour.y = SquareOne.y - 10;
 		break;
 	}

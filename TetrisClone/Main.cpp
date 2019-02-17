@@ -37,7 +37,7 @@ int main(int argc, char **argv)
 	}
 
 	timer = al_create_timer(1.0 / FPS);
-	keyPointer = al_create_timer(.5);
+	keyPointer = al_create_timer(.1);
 	if (!timer || !keyPointer) {
 		fprintf(stderr, "failed to create timer!\n");
 		return -1;
@@ -92,36 +92,36 @@ int main(int argc, char **argv)
 		
 		if (ev.timer.source == keyPointer) {
 			al_get_keyboard_state(&keyState);
-			if (al_key_down(&keyState, ALLEGRO_KEY_UP) && firstShape->Location.y >= 10) {
+			if (al_key_down(&keyState, ALLEGRO_KEY_UP) && (firstShape->Location.y + firstShape->ShapeRange.MinYFromCenterBlock) >= 10) {
 				firstShape->move(-10, 0);
 			}
 
-			if (al_key_down(&keyState, ALLEGRO_KEY_DOWN) && firstShape->Location.y <= SCREEN_H - firstShape->ShapeSize.y - 10) {
+			if (al_key_down(&keyState, ALLEGRO_KEY_DOWN) && (firstShape->Location.y + firstShape->ShapeRange.MaxYFromCenterBlock) <= SCREEN_H - 10) {
 				firstShape->move(10, 0);
 			}
 
-			if (al_key_down(&keyState, ALLEGRO_KEY_LEFT) && firstShape->Location.x >= 10) {
+			if (al_key_down(&keyState, ALLEGRO_KEY_LEFT) && (firstShape->Location.x + firstShape->ShapeRange.MinXFromCenterBlock) >= 10) {
 				firstShape->move(0, -10);
 			}
 
-			if (al_key_down(&keyState, ALLEGRO_KEY_RIGHT) && firstShape->Location.x <= SCREEN_W - firstShape->ShapeSize.x - 10) {
+			if (al_key_down(&keyState, ALLEGRO_KEY_RIGHT) && (firstShape->Location.x + firstShape->ShapeRange.MaxXFromCenterBlock) <= SCREEN_W - 10) {
 				firstShape->move(0, 10);
 			}
 		}
 		else if (ev.type == ALLEGRO_EVENT_TIMER && ev.timer.source == timer) {
-			if (key[KEY_UP] && firstShape->Location.y >= 10) {
+			if (key[KEY_UP] && (firstShape->Location.y + firstShape->ShapeRange.MinYFromCenterBlock) >= 10) {
 				firstShape->move(-10, 0);
 			}
 
-			if (key[KEY_DOWN] && firstShape->Location.y <= SCREEN_H - firstShape->ShapeSize.y - 10) {
+			if (key[KEY_DOWN] && (firstShape->Location.y + firstShape->ShapeRange.MaxYFromCenterBlock) <= SCREEN_H - 10) {
 				firstShape->move(10, 0);
 			}
 
-			if (key[KEY_LEFT] && firstShape->Location.x >= 10) {
+			if (key[KEY_LEFT] && (firstShape->Location.x + firstShape->ShapeRange.MinXFromCenterBlock) >= 10) {
 				firstShape->move(0, -10);
 			}
 
-			if (key[KEY_RIGHT] && firstShape->Location.x <= SCREEN_W - firstShape->ShapeSize.x - 10) {
+			if (key[KEY_RIGHT] && (firstShape->Location.x + firstShape->ShapeRange.MaxXFromCenterBlock) <= SCREEN_W - 10) {
 				firstShape->move(0, 10);
 			}
 
