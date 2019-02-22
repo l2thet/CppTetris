@@ -10,7 +10,6 @@
 
 //=====================================
 // Included deps
-#include "Point.h"
 
 enum ROTATION {
 	Right = 1, Up = 2, Down = 3, Left = 4
@@ -22,6 +21,12 @@ struct ShapeDimensions
 	int MinYFromCenterBlock;
 	int MaxXFromCenterBlock;
 	int MinXFromCenterBlock;
+};
+
+struct Point
+{
+	int x;
+	int y;
 };
 
 class Shape {
