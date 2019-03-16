@@ -155,7 +155,6 @@ int main(int argc, char **argv)
 				break;
 
 			case ALLEGRO_KEY_RIGHT:
-				fprintf(stderr, "Fired!\n");
 				key[KEY_RIGHT] = true;
 				break;
 
@@ -168,33 +167,6 @@ int main(int argc, char **argv)
 				break;
 			}
 		}
-		/*else if (ev.type == ALLEGRO_EVENT_KEY_UP) {
-			switch (ev.keyboard.keycode) {
-			case ALLEGRO_KEY_UP:
-				key[KEY_UP] = true;
-				break;
-
-			case ALLEGRO_KEY_DOWN:
-				key[KEY_DOWN] = true;
-				break;
-
-			case ALLEGRO_KEY_LEFT:
-				key[KEY_LEFT] = true;
-				break;
-
-			case ALLEGRO_KEY_RIGHT:
-				key[KEY_RIGHT] = true;
-				break;
-
-			case ALLEGRO_KEY_ESCAPE:
-				doexit = true;
-				break;
-
-			case ALLEGRO_KEY_SPACE:
-				key[KEY_SPACE] = true;
-				break;
-			}
-		}*/
 
 		if (redraw && al_is_event_queue_empty(event_queue)) {
 			redraw = false;
